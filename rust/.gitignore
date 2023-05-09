@@ -1,0 +1,5 @@
+
+bindings.rs
+*.a
+main
+anec_*.rs
