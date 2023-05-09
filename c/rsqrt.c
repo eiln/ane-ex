@@ -22,9 +22,9 @@ int main(void)
 	float_to_half_c_array(Af, A);
 	float_to_half_c_array(Bf, B); // init_half_array(B, 4);
 
-	ane_send(nn, A, 0);
+	ane_tile_send(nn, A, 0);
 	err = ane_exec(nn);
-	ane_read(nn, B, 0);
+	ane_tile_read(nn, B, 0);
 
 	for (int i = 0; i < 4; i++) {
 		uint16_t x = A[i];

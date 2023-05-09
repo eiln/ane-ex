@@ -32,13 +32,13 @@ int main(void)
 	init_half_array(dat3, mat4.size());
 
 	for (int i = 0; i < 100; i ++){
-		ane_send(nn, dat1, 0);
-		ane_send(nn, dat2, 1);
+		ane_tile_send(nn, dat1, 0);
+		ane_tile_send(nn, dat2, 1);
 		err = ane_exec(nn);
 		if (err){
 			std::cout << "fuck" << std::endl;
 		}
-		ane_read(nn, dat3, 0);
+		ane_tile_read(nn, dat3, 0);
 
 		if (memcmp(dat3, dat4, sizeof(dat3))) {
 			std::cout << "fuck" << std::endl;

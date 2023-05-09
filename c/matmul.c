@@ -32,12 +32,12 @@ int main(void)
 		return -1;
 	}
 
-	ane_send(nn, Ah, 0);
-	ane_send(nn, Bh, 1);
+	ane_tile_send(nn, Ah, 0);
+	ane_tile_send(nn, Bh, 1);
 
 	err = ane_exec(nn);
 
-	ane_read(nn, Ch, 0);
+	ane_tile_read(nn, Ch, 0);
 
 	half_to_float_c_array(Ch, Cf);
 	printf("[ %g, %g\n", Cf[0], Cf[1]);

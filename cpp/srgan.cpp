@@ -22,14 +22,14 @@ int main(void)
 	auto input = D4::Tensor<uint16_t, 1, 3, 512, 512, D4_ALLOC_HEAP>::Constant(0x3c00);
 	auto output = D4::Tensor<uint16_t, 1, 3, 2048, 2048, D4_ALLOC_HEAP>::Zero();
 
-	ane_send_chan(nn, input.data(), 0);
+	ane_send(nn, input.data(), 0);
 	err = ane_exec(nn);
 	if (err) {
 		std::cout << "fuck" << std::endl;
 	}
 	else {
 		printf("before: x: 0x%x\n", *(uint16_t *)(output.data()));
-		ane_read_chan(nn, (void *)(output.data()), 0);
+		ane_read(nn, (void *)(output.data()), 0);
 		printf("after: x: 0x%x\n", *(uint16_t *)(output.data()));
 	}
 
